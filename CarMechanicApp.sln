@@ -1,0 +1,43 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMechanic.Domain", "CarMechanicApp\CarMechanic.Domain\CarMechanic.Domain.csproj", "{5FBCFFA5-D58C-4AE4-AFD4-330AD72F1402}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMechanic.Application", "CarMechanicApp\CarMechanic.Application\CarMechanic.Application.csproj", "{ABEC338A-7C3A-4FA3-890C-0758C847924B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMechanic.Infrastructure", "CarMechanicApp\CarMechanic.Infrastructure\CarMechanic.Infrastructure.csproj", "{8857C229-51EF-4EAC-907B-ACD98ECA898D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMechanic.Console", "CarMechanicApp\CarMechanic.Console\CarMechanic.Console.csproj", "{901C5C8F-05FC-49FA-8FC4-8764FDEF2B94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarMechanic.Tests", "CarMechanicApp.Tests\CarMechanic.Tests.csproj", "{4CF59AA6-842D-4A5B-8BB5-9B6FFD0ACD6B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FBCFFA5-D58C-4AE4-AFD4-330AD72F1402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FBCFFA5-D58C-4AE4-AFD4-330AD72F1402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FBCFFA5-D58C-4AE4-AFD4-330AD72F1402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FBCFFA5-D58C-4AE4-AFD4-330AD72F1402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABEC338A-7C3A-4FA3-890C-0758C847924B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABEC338A-7C3A-4FA3-890C-0758C847924B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABEC338A-7C3A-4FA3-890C-0758C847924B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABEC338A-7C3A-4FA3-890C-0758C847924B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8857C229-51EF-4EAC-907B-ACD98ECA898D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8857C229-51EF-4EAC-907B-ACD98ECA898D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8857C229-51EF-4EAC-907B-ACD98ECA898D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8857C229-51EF-4EAC-907B-ACD98ECA898D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{901C5C8F-05FC-49FA-8FC4-8764FDEF2B94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{901C5C8F-05FC-49FA-8FC4-8764FDEF2B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{901C5C8F-05FC-49FA-8FC4-8764FDEF2B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{901C5C8F-05FC-49FA-8FC4-8764FDEF2B94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CF59AA6-842D-4A5B-8BB5-9B6FFD0ACD6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CF59AA6-842D-4A5B-8BB5-9B6FFD0ACD6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CF59AA6-842D-4A5B-8BB5-9B6FFD0ACD6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CF59AA6-842D-4A5B-8BB5-9B6FFD0ACD6B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
