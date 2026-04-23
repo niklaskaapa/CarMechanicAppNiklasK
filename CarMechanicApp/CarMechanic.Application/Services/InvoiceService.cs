@@ -41,7 +41,7 @@ public class InvoiceService
         var partsCost = workOrder.Parts.Sum(p => p.TotalPrice);
         var subtotal = laborCost + partsCost;
         var discount = Math.Round(subtotal * (discountPercent / 100m), 2);
-        var totalAmount = subtotal;
+        var totalAmount = subtotal - discount;
 
         var invoice = new Invoice
         {
@@ -92,7 +92,9 @@ public class InvoiceService
     // MISSING_TARGET: GetInvoicesByCustomer
     public List<Invoice> GetInvoicesByCustomer(int customerId)
     {
-        throw new NotImplementedException();
+        
+        return _invoiceRepository.GetByCustomerId(customerId);
+
     }
 
     // BUG_TARGET: CalculateOutstandingBalance

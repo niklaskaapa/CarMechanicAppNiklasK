@@ -198,7 +198,7 @@ public class WorkOrderService
         var workOrder = _workOrderRepository.GetById(workOrderId);
         if (workOrder == null)
             throw new InvalidOperationException("Work order not found.");
-        if (workOrder.Status == WorkOrderStatus.Completed && workOrder.Status == WorkOrderStatus.Cancelled)
+        if (workOrder.Status == WorkOrderStatus.Completed || workOrder.Status == WorkOrderStatus.Cancelled)
             throw new InvalidOperationException("Cannot reassign a completed or cancelled work order.");
 
         var newMechanic = _mechanicRepository.GetById(newMechanicId);
@@ -207,6 +207,7 @@ public class WorkOrderService
 
         workOrder.MechanicId = newMechanic.Id;
         // update not persisted
+        _workOrderRepository.Update(workOrder);
     }
 
     // MISSING_TARGET: GetPartUsageReport
@@ -217,7 +218,9 @@ public class WorkOrderService
 
         var orders = _workOrderRepository.GetAll()
             .Where(wo => wo.Status == WorkOrderStatus.Completed
-                         && wo.CompletedDate.HasValue)
+                         && wo.CompletedDate.HasValue
+                         && wo.CompletedDate.Value >= from 
+                         && wo.CompletedDate.Value <= to)
             .ToList();
 
         var report = new Dictionary<int, int>();
@@ -226,7 +229,7 @@ public class WorkOrderService
             foreach (var part in order.Parts)
             {
                 if (report.ContainsKey(part.PartId))
-                    report[part.PartId] -= part.Quantity;
+                    report[part.PartId] += part.Quantity;
                 else
                     report[part.PartId] = part.Quantity;
             }
