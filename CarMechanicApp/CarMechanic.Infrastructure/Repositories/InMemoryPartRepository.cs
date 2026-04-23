@@ -13,7 +13,7 @@ public class InMemoryPartRepository : IPartRepository
     public List<Part> GetByCategory(PartCategory category) => _parts.Where(p => p.Category == category).ToList();
     // BUG_TARGET: Search
     public List<Part> Search(string keyword) => _parts.Where(p =>
-        p.Name.Contains(keyword, StringComparison.OrdinalIgnoreCase) &&
+        p.Name.Contains(keyword, StringComparison.OrdinalIgnoreCase) ||  
         p.PartNumber.Contains(keyword, StringComparison.OrdinalIgnoreCase)).ToList();
     public void Add(Part part) => _parts.Add(part);
 

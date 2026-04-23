@@ -33,7 +33,7 @@ public class MechanicService
             LastName = lastName,
             Specialty = specialty,
             HourlyRate = hourlyRate,
-            HireDate = DateTime.MinValue
+            HireDate = DateTime.Now
         };
 
         _mechanicRepository.Add(mechanic);
@@ -111,9 +111,25 @@ public class MechanicService
     }
 
     // MISSING_TARGET: GetMechanicRevenue
-    public decimal GetMechanicRevenue(int mechanicId)
+    public decimal GetMechanicRevenue(int mechanicId)       // Hämta Mekanikers Intäkter plus eventuella intäkter för reservdelar.
     {
-        throw new NotImplementedException();
+        var mechanic = _mechanicRepository.GetById(mechanicId);
+        if (mechanic == null)
+        {
+            throw new InvalidOperationException("Mechanic not found.");
+        }
+
+        var compleatedOrders = _workOrderRepository
+            .GetByMechanicId(mechanicId)
+            .Where(wo => wo.Status == WorkOrderStatus.Completed);
+
+        var revenue = compleatedOrders.Sum(wo =>
+        (wo.ActualHours * mechanic.HourlyRate) +
+        wo.Parts.Sum(p => p.TotalPrice));
+
+
+        return Math.Round(revenue, 2);
+
     }
 
     // BUG_TARGET: GetTotalMechanics
@@ -125,7 +141,10 @@ public class MechanicService
     // MISSING_TARGET: GetMechanicFullName
     public string GetMechanicFullName(int mechanicId)
     {
-        throw new NotImplementedException();
+        var mechanic = _mechanicRepository.GetById(mechanicId);
+
+        return mechanic.FullName;
+       
     }
 
     public Mechanic? GetMechanicById(int id)

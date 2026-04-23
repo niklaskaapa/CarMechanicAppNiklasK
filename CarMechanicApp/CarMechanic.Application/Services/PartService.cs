@@ -112,7 +112,9 @@ public class PartService
     // MISSING_TARGET: GetPartsByCategory
     public List<Part> GetPartsByCategory(PartCategory category)
     {
-        throw new NotImplementedException();
+
+        return _partRepository.GetByCategory(category);
+
     }
 
     // BUG_TARGET: GetTotalStockValue

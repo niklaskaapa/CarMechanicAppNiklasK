@@ -38,7 +38,8 @@ public class Program
             System.Console.WriteLine("7. Skapa faktura");
             System.Console.WriteLine("8. Visa alla fordon");
             System.Console.WriteLine("9. Visa mekaniker");
-            System.Console.WriteLine("10. Avsluta");
+            System.Console.WriteLine("10. Visa mekanikers intäkt");
+            System.Console.WriteLine("11. Avsluta");
             System.Console.Write("\nVälj alternativ: ");
 
             var choice = System.Console.ReadLine();
@@ -73,6 +74,9 @@ public class Program
                     ShowMechanics(mechanicService);
                     break;
                 case "10":
+                    ShowMechanicRevenue(mechanicService);
+                    break;
+                case "11":
                     running = false;
                     break;
                 default:
@@ -81,6 +85,8 @@ public class Program
             }
         }
     }
+
+    
 
     private static void RegisterCustomer(InMemoryCustomerRepository repo)
     {
@@ -139,7 +145,7 @@ public class Program
         var rate = decimal.Parse(System.Console.ReadLine() ?? "350");
 
         var mechanic = mechanicService.HireMechanic(first, last, specialty, rate);
-        System.Console.WriteLine($"Mekaniker '{mechanic.FullName}' anställd med ID {mechanic.Id}.");
+        System.Console.WriteLine($"Mekaniker '{mechanic.FullName}' anställd med ID {mechanic.Id}. Anställningsdatum är: {mechanic.HireDate}");
     }
 
     private static void AddPart(PartService partService)
@@ -217,4 +223,37 @@ public class Program
         }
         System.Console.WriteLine($"Totalt antal mekaniker: {count}");
     }
+
+    private static void ShowMechanicRevenue(MechanicService mechanicService)
+    {
+        while (true)
+        {
+            System.Console.Write("Ange mekaniker-ID: ");
+
+            if (!int.TryParse(System.Console.ReadLine(), out int mechanicId) || mechanicId <= 0)
+            {
+                System.Console.WriteLine("Ogiltigt ID, försök igen.");
+                continue;
+            }
+
+            try
+            {
+                var revenue = mechanicService.GetMechanicRevenue(mechanicId);
+                var name = mechanicService.GetMechanicFullName(mechanicId);
+
+                System.Console.WriteLine($"Mekaniker: {name}");
+                System.Console.WriteLine($"Total intäkt: {revenue:F2} kr");
+                return; 
+            }
+            catch (InvalidOperationException ex)
+            {
+                System.Console.WriteLine(ex.Message);
+                return;
+                
+            }
+        }
+
+    }
+
+
 }

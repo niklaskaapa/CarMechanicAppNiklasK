@@ -94,7 +94,7 @@ public class VehicleService
     // BUG_TARGET: GetVehiclesByType
     public List<Vehicle> GetVehiclesByType(VehicleType type)
     {
-        return _vehicleRepository.GetAll();
+        return _vehicleRepository.GetByType(type);
     }
 
     // MISSING_TARGET: GetVehicleHistory
